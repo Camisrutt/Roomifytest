@@ -12,7 +12,9 @@ if ($response) {
     header("Location: signup_success.html");
     exit();
 } else {
-    header("Location: account_exists.html");
+    echo "Error creating account. Please try again later.";
+    error_log("Signup process failed. Response: " . json_encode($response));
+    // Uncomment the line below to see raw output during debugging
+    // var_dump($response);
     exit();
 }
-
