@@ -1,6 +1,6 @@
 <?php
 function callNodeAPI($endpoint, $method = 'GET', $data = null) {
-    $url = "https://your-vercel-app.vercel.app/api/$endpoint";
+    $url = "https://roomifytest-oxyoc976t-cameron-rutherfords-projects.vercel.app/api/$endpoint";
     $options = [
         'http' => [
             'method' => $method,
@@ -12,4 +12,4 @@ function callNodeAPI($endpoint, $method = 'GET', $data = null) {
     $result = file_get_contents($url, false, $context);
     return json_decode($result, true);
 }
-?>
+

@@ -15,4 +15,4 @@ if ($user && password_verify($password, $user['password'])) {
     header('Location: login-page.html?error=1');
     exit();
 }
-?>
+
