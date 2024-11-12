@@ -1,4 +1,11 @@
 {
+  "name": "roomify",
+  "version": "1.0.0",
+  "description": "A project designed to match roommates based on preferences such as cleanliness, lifestyle, and more.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "@vercel/node": "^2.10.3",
     "bcrypt": "^5.1.1",
@@ -12,5 +19,8 @@
     "php": "^1.1.0",
     "sphp": "^0.6.3",
     "uuid": "^11.0.2"
+  },
+  "engines": {
+    "node": "18.x"
   }
 }
