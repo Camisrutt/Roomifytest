@@ -1,47 +1,54 @@
 {
   "version": 2,
-"builds": [
-{
-"src": "./index.js",
-"use": "@vercel/node"
-}
-],
-"routes": [
-  {
-    "src": "/api/check_password",
-    "dest": "/Root/api/check_password.js"
-  },
-  {
-    "src": "/api/login_process",
-    "dest": "/Root/api/login_process.js"
-  },
-  {
-    "src": "/api/password_hash",
-    "dest": "/Root/api/password_hash.js"
-  },
-  {
-    "src": "/api/password_verify",
-    "dest": "/Root/api/password_verify.js"
-  },
-  {
-    "src": "/api/signup_process",
-    "dest": "/Root/api/signup_process.js"
-  },
-  {
-    "src": "/html-pages/(.*)",
-    "dest": "/Root/html-pages/$1"
-  },
-  {
-    "src": "/(.*)",
-    "dest": "/index.js"
-  },
-  {
-    "src": "/",
-    "dest": "/Root/home-page.html"
-  },
+  "builds": [
+    {
+      "src": "./index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/check_password",
+      "dest": "/Root/api/check_password.js"
+    },
+    {
+      "src": "/api/login_process",
+      "dest": "/Root/api/login_process.js"
+    },
+    {
+      "src": "/api/password_hash",
+      "dest": "/Root/api/password_hash.js"
+    },
+    {
+      "src": "/api/password_verify",
+      "dest": "/Root/api/password_verify.js"
+    },
+    {
+      "src": "/api/signup_process",
+      "dest": "/Root/api/signup_process.js"
+    },
+    {
+      "src": "/html-pages/(.*)",
+      "dest": "/Root/html-pages/$1"
+    },
     {
       "src": "/assets/(.*)",
-      "dest": "/assets/$1"
+      "dest": "/Root/assets/$1"
+    },
+    {
+      "src": "/css/(.*)",
+      "headers": {
+        "Content-Type": "text/css"
+      },
+      "dest": "/Root/assets/css/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.js"
+    },
+    {
+      "src": "/",
+      "dest": "/Root/home-page.html"
     }
   ]
 }
