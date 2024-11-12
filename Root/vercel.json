@@ -1,7 +1,7 @@
 {
   "version": 2,
   "functions": {
-    "api/*.php": {
+    "api/*.js": {
       "runtime": "vercel-node@1.10.0"
     }
   },
