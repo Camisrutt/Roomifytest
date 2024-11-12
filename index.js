@@ -12,6 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({ secret: 'your_secret_key', resave: false, saveUninitialized: true }));
 
 // Static files
+app.use(express.static('Root/public'));
 app.use(express.static('Root/assets'));
 app.use(express.static('Root/html-pages'));
 
@@ -28,6 +29,7 @@ app.use('/api/create', require('./Root/api/create'));
 app.use('/api/read', require('./Root/api/read'));
 app.use('/api/update', require('./Root/api/update'));
 app.use('/api/delete', require('./Root/api/delete'));
+
 // Serve the homepage
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/Root/home-page.html');
@@ -37,3 +39,5 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
+module.exports = app;
