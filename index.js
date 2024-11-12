@@ -32,7 +32,7 @@ app.use('/api/delete', require('./Root/api/delete'));
 
 // Serve the homepage
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + 'Root/home-page.html');
+    res.sendFile(__dirname + '/Root/home-page.html');
 });
 
 // Start the server
