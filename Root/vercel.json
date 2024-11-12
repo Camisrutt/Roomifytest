@@ -36,7 +36,7 @@
     },
     {
       "src": "/",
-      "dest": "/home-page.html"
+      "dest": "/Root/home-page.html"
     },
     {
       "src": "/signup",
