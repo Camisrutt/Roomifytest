@@ -36,7 +36,7 @@
       "dest": "/Root/assets/$1"
     },
     {
-      "src": "/Root/assets/css/(.*)",
+      "src": "/css/(.*)",
       "headers": {
         "Content-Type": "text/css"
       },
