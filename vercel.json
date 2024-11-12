@@ -33,7 +33,7 @@
   },
   {
     "src": "/(.*)",
-    "dest": "/Root/app.js"
+    "dest": "/index.js"
   },
   {
     "src": "/",
