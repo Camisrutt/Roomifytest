@@ -2,33 +2,37 @@
   "version": 2,
   "functions": {
     "api/*.php": {
-      "runtime": "vercel-php@0.7.3"
+      "runtime": "vercel-node@1.10.0"
     }
   },
   "routes": [
     {
       "src": "/api/check_password",
-      "dest": "/api/check_password.php"
+      "dest": "/api/check_password.js"
     },
     {
       "src": "/api/login_process",
-      "dest": "/api/login_process.php"
+      "dest": "/api/login_process.js"
     },
     {
       "src": "/api/password_hash",
-      "dest": "/api/password_hash.php"
+      "dest": "/api/password_hash.js"
     },
     {
       "src": "/api/password_verify",
-      "dest": "/api/password_verify.php"
+      "dest": "/api/password_verify.js"
     },
     {
       "src": "/api/signup_process",
-      "dest": "/api/signup_process.php"
+      "dest": "/api/signup_process.js"
     },
     {
       "src": "/html-pages/(.*)",
       "dest": "/html-pages/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.js"
     },
     {
       "src": "/",
@@ -61,10 +65,6 @@
     {
       "src": "/assets/(.*)",
       "dest": "/assets/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/api/index.php"
     }
   ]
 }

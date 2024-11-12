@@ -1,9 +1,13 @@
 {
   "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.3",
     "composer": "^4.1.0",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
+    "express-session": "^1.18.1",
     "mongodb": "^6.10.0",
+    "node-fetch": "^3.3.2",
     "php": "^1.1.0",
     "sphp": "^0.6.3",
     "uuid": "^11.0.2"
