@@ -1,5 +1,5 @@
 // check_password.js
-const { client } = require('../db');
+const { client } = require('../../db');
 const bcrypt = require('bcrypt');
 
 module.exports = async (req, res) => {
