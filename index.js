@@ -14,7 +14,9 @@ app.use(session({ secret: 'your_secret_key', resave: false, saveUninitialized: t
 
 // Static files
 app.use(express.static(path.join(__dirname, 'Root/assets')));
+app.use(express.static(path.join(__dirname, 'Root/assets/css')));
 app.use(express.static(path.join(__dirname, 'Root/html-pages')));
+app.use(express.static(path.join(__dirname, 'Root/')));
 
 // Connect to MongoDB on app start
 connectToMongoDB().catch(console.error);
