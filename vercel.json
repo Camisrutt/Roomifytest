@@ -39,30 +39,6 @@
     "src": "/",
     "dest": "/Root/home-page.html"
   },
-  {
-    "src": "/signup",
-    "dest": "/Root/html-pages/signup-page.html"
-  },
-    {
-      "src": "/login",
-      "dest": "/html-pages/login-page.html"
-    },
-    {
-      "src": "/background",
-      "dest": "/assets/css/background.css"
-    },
-    {
-      "src": "/navbar",
-      "dest": "/assets/css/nav-bar.css"
-    },
-    {
-      "src": "/logocss",
-      "dest": "/assets/css/logo.css"
-    },
-    {
-      "src": "/logo",
-      "dest": "/assets/images/logo.png"
-    },
     {
       "src": "/assets/(.*)",
       "dest": "/assets/$1"

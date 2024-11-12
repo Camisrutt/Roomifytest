@@ -13,10 +13,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({ secret: 'your_secret_key', resave: false, saveUninitialized: true }));
 
 // Static files
-app.use(express.static(path.join(__dirname, 'Root/assets')));
-app.use(express.static(path.join(__dirname, 'Root/assets/css')));
-app.use(express.static(path.join(__dirname, 'Root/html-pages')));
-app.use(express.static(path.join(__dirname, 'Root/')));
+app.use('/assets', express.static(path.join(__dirname, 'Root/assets')));
+app.use('/css', express.static(path.join(__dirname, 'Root/assets/css')));
+app.use('/html-pages', express.static(path.join(__dirname, 'Root/html-pages')));
+app.use('/root', express.static(path.join(__dirname, 'Root/')));
 
 // Connect to MongoDB on app start
 connectToMongoDB().catch(console.error);
