@@ -12,7 +12,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({ secret: 'your_secret_key', resave: false, saveUninitialized: true }));
 
 // Static files
-app.use(express.static('public'));
+app.use(express.static('Root/assets'));
+app.use(express.static('Root/html-pages'));
 
 // Connect to MongoDB on app start
 connectToMongoDB().catch(console.error);
@@ -23,6 +24,14 @@ app.use('/api/login_process', require('./Root/api/login_process'));
 app.use('/api/password_hash', require('./Root/api/password_hash'));
 app.use('/api/password_verify', require('./Root/api/password_verify'));
 app.use('/api/signup_process', require('./Root/api/signup_process'));
+app.use('/api/create', require('./Root/api/create'));
+app.use('/api/read', require('./Root/api/read'));
+app.use('/api/update', require('./Root/api/update'));
+app.use('/api/delete', require('./Root/api/delete'));
+// Serve the homepage
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/Root/home-page.html');
+});
 
 // Start the server
 app.listen(PORT, () => {
