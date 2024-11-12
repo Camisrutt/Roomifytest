@@ -1,6 +1,7 @@
 const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
+const path = require('path');
 const { connectToMongoDB } = require('./db');
 
 const app = express();
@@ -32,7 +33,7 @@ app.use('/api/delete', require('./Root/api/delete'));
 
 // Serve the homepage
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/Root/home-page.html');
+    res.sendFile(__dirname + 'home-page.html');
 });
 
 // Start the server
