@@ -31,7 +31,7 @@ app.use('/api/update', require('./Root/api/update'));
 app.use('/api/delete', require('./Root/api/delete'));
 
 // Serve the homepage
-app.get('/', (req, res) => {
+app.get('/Root/home-page.html', (req, res) => {
     res.sendFile(__dirname + '/Root/home-page.html');
 });
 
