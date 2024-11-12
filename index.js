@@ -13,7 +13,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({ secret: 'your_secret_key', resave: false, saveUninitialized: true }));
 
 // Static files
-app.use(express.static('Root/public'));
 app.use(express.static('Root/assets'));
 app.use(express.static('Root/html-pages'));
 
@@ -33,7 +32,7 @@ app.use('/api/delete', require('./Root/api/delete'));
 
 // Serve the homepage
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + 'home-page.html');
+    res.sendFile(__dirname + 'Root/home-page.html');
 });
 
 // Start the server
