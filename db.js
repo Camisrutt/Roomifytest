@@ -2,10 +2,11 @@
 //Delete key below when put in .env file \/ (After project you'll want to delete this key)
 //MONGODB_URI=mongodb+srv://samiller1109:k8FAhQQC8OO7lHSH@cluster1.jh36l.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1
 // db.js
+// Root/db.js
 const { MongoClient, ServerApiVersion } = require('mongodb');
 require('dotenv').config();
 
-const uri = process.env.MONGODB_URI;
+const uri = "mongodb+srv://camrutt4:38OvgbgoLX72bjYy@cluster0.4qvnb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 if (!uri) {
     throw new Error('MONGODB_URI environment variable is not defined');
