@@ -1,0 +1,71 @@
+{
+  "version": 2,
+"builds": [
+{
+"src": "./index.js",
+"use": "@vercel/node"
+}
+],
+"routes": [
+  {
+    "src": "/api/check_password",
+    "dest": "/Root/api/check_password.js"
+  },
+  {
+    "src": "/api/login_process",
+    "dest": "/Root/api/login_process.js"
+  },
+  {
+    "src": "/api/password_hash",
+    "dest": "/Root/api/password_hash.js"
+  },
+  {
+    "src": "/api/password_verify",
+    "dest": "/Root/api/password_verify.js"
+  },
+  {
+    "src": "/api/signup_process",
+    "dest": "/Root/api/signup_process.js"
+  },
+  {
+    "src": "/html-pages/(.*)",
+    "dest": "/Root/html-pages/$1"
+  },
+  {
+    "src": "/(.*)",
+    "dest": "/Root/app.js"
+  },
+  {
+    "src": "/",
+    "dest": "/Root/home-page.html"
+  },
+  {
+    "src": "/signup",
+    "dest": "/Root/html-pages/signup-page.html"
+  },
+    {
+      "src": "/login",
+      "dest": "/html-pages/login-page.html"
+    },
+    {
+      "src": "/background",
+      "dest": "/assets/css/background.css"
+    },
+    {
+      "src": "/navbar",
+      "dest": "/assets/css/nav-bar.css"
+    },
+    {
+      "src": "/logocss",
+      "dest": "/assets/css/logo.css"
+    },
+    {
+      "src": "/logo",
+      "dest": "/assets/images/logo.png"
+    },
+    {
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    }
+  ]
+}

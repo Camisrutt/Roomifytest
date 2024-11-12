@@ -13,8 +13,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({ secret: 'your_secret_key', resave: false, saveUninitialized: true }));
 
 // Static files
-app.use(express.static('Root/assets'));
-app.use(express.static('Root/html-pages'));
+app.use(express.static(path.join(__dirname, 'Root/assets')));
+app.use(express.static(path.join(__dirname, 'Root/html-pages')));
 
 // Connect to MongoDB on app start
 connectToMongoDB().catch(console.error);
@@ -31,8 +31,8 @@ app.use('/api/update', require('./Root/api/update'));
 app.use('/api/delete', require('./Root/api/delete'));
 
 // Serve the homepage
-app.get('/Root/home-page.html', (req, res) => {
-    res.sendFile(__dirname + '/Root/home-page.html');
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'Root/home-page.html'));
 });
 
 // Start the server
