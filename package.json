@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@vercel/node": "^2.10.3",
+    "autoprefixer": "^10.4.20",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.3",
     "composer": "^4.1.0",
@@ -17,7 +18,10 @@
     "mongodb": "^6.10.0",
     "node-fetch": "^3.3.2",
     "php": "^1.1.0",
+    "postcss": "^8.4.49",
+    "postcss-cli": "^11.0.0",
     "sphp": "^0.6.3",
+    "stylelint": "^16.10.0",
     "uuid": "^11.0.2"
   },
   "engines": {
