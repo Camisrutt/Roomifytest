@@ -1,27 +1,39 @@
-// signup_process.js
-const { client } = require('../db');
-const bcrypt = require('bcrypt');
+// api/signup_process.js
+import { parse } from 'querystring';
+import { connectToMongoDB } from '../db';
+import bcrypt from 'bcrypt';
 
-module.exports = async (req, res) => {
-    if (req.method !== 'POST') {
-        return res.status(405).json({ error: 'Method not allowed' });
-    }
+export default async (req, res) => {
+  if (req.method !== 'POST') {
+    res.status(405).send('Method Not Allowed');
+    return;
+  }
 
-    const { username, email, password } = req.body;
+  let body = '';
+  req.on('data', chunk => {
+    body += chunk.toString();
+  });
+
+  req.on('end', async () => {
+    const { username, email, password } = parse(body);
 
     try {
-        const hashedPassword = await bcrypt.hash(password, 10);
+      const db = await connectToMongoDB();
+      const collection = db.collection('users');
+      const hashedPassword = await bcrypt.hash(password, 10);
 
-        const collection = client.db('roomify_db').collection('users');
-        const result = await collection.insertOne({ username, email, password: hashedPassword });
+      await collection.insertOne({ username, email, password: hashedPassword });
 
-        res.redirect('/Root/html-pages/signup_success.html');
+      res.writeHead(302, { Location: '/signup_success.html' });
+      res.end();
     } catch (error) {
-        if (error.code === 11000) { // Duplicate key error
-            res.redirect('/Root/html-pages/account_exists.html');
-        } else {
-            console.error('Database Error:', error);
-            res.status(500).send('A database error occurred. Please try again later.');
-        }
+      if (error.code === 11000) {
+        res.writeHead(302, { Location: '/account_exists.html' });
+        res.end();
+      } else {
+        console.error('Database Error:', error);
+        res.status(500).send('Internal Server Error');
+      }
     }
+  });
 };

@@ -22,15 +22,15 @@ app.use('/root', express.static(path.join(__dirname, 'Root/')));
 connectToMongoDB().catch(console.error);
 
 // Route requests to the appropriate API files
-app.use('/api/check_password', require('./Root/api/check_password'));
-app.use('/api/login_process', require('./Root/api/login_process'));
-app.use('/api/password_hash', require('./Root/api/password_hash'));
-app.use('/api/password_verify', require('./Root/api/password_verify'));
-app.use('/api/signup_process', require('./Root/api/signup_process'));
-app.use('/api/create', require('./Root/api/create'));
-app.use('/api/read', require('./Root/api/read'));
-app.use('/api/update', require('./Root/api/update'));
-app.use('/api/delete', require('./Root/api/delete'));
+app.use('/api/check_password', require('./api/check_password'));
+app.use('/api/login_process', require('./api/login_process'));
+app.use('/api/password_hash', require('./api/password_hash'));
+app.use('/api/password_verify', require('./api/password_verify'));
+app.use('/api/signup_process', require('./api/signup_process'));
+app.use('/api/create', require('./api/create'));
+app.use('/api/read', require('./api/read'));
+app.use('/api/update', require('./api/update'));
+app.use('/api/delete', require('./api/delete'));
 
 // Serve the homepage
 app.get('/', (req, res) => {

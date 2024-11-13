@@ -1,26 +1,44 @@
-// login_process.js
-const { client } = require('../db');
-const bcrypt = require('bcrypt');
+// api/login_process.js
+import { parse } from 'querystring';
+import { connectToMongoDB } from '../db';
+import bcrypt from 'bcrypt';
 
-module.exports = async (req, res) => {
-    if (req.method !== 'POST') {
-        return res.status(405).json({ error: 'Method not allowed' });
+export default async (req, res) => {
+  if (req.method !== 'POST') {
+    res.status(405).json({ error: 'Method not allowed' });
+    return;
+  }
+
+  let body = '';
+  req.on('data', chunk => {
+    body += chunk.toString();
+  });
+
+  req.on('end', async () => {
+    const { username, password } = parse(body);
+
+    if (!username || !password) {
+      res.status(400).json({ error: 'Username and password are required.' });
+      return;
     }
-
-    const { username, password } = req.body;
 
     try {
-        const collection = client.db('roomify_db').collection('users');
-        const user = await collection.findOne({ username });
+      const { db } = await connectToMongoDB();
+      const collection = db.collection('users');
+      const user = await collection.findOne({ username });
 
-        if (user && await bcrypt.compare(password, user.password)) {
-            req.session.username = user.username;
-            res.redirect('/Root/html-pages/login_success.html');
-        } else {
-            res.redirect('/Root/html-pages/login-page.html?error=1');
-        }
+      if (user && (await bcrypt.compare(password, user.password))) {
+        // Since serverless functions are stateless, you can use tokens or set cookies
+        // For this example, we'll redirect to a success page
+        res.writeHead(302, { Location: '/html-pages/login_success.html' });
+        res.end();
+      } else {
+        res.writeHead(302, { Location: '/html-pages/login-page.html?error=1' });
+        res.end();
+      }
     } catch (error) {
-        console.error('Database Error:', error);
-        res.status(500).send('A database error occurred. Please try again later.');
+      console.error('Database Error:', error);
+      res.status(500).send('A database error occurred. Please try again later.');
     }
+  });
 };

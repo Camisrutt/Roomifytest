@@ -1,23 +1,47 @@
-// password_hash.js
-const { client } = require('../db');
-const bcrypt = require('bcrypt');
+// api/password_hash.js
 
-module.exports = async (req, res) => {
-    if (req.method !== 'POST') {
-        return res.status(405).json({ error: 'Method not allowed' });
+import { parse } from 'querystring';
+import { client } from '../db';  // Adjust the path according to your project structure
+import bcrypt from 'bcrypt';
+
+export default async (req, res) => {
+  if (req.method !== 'POST') {
+    res.status(405).json({ error: 'Method not allowed' });
+    return;
+  }
+
+  let body = '';
+  req.on('data', chunk => {
+    body += chunk.toString();
+  });
+
+  req.on('end', async () => {
+    const { username, email, password } = parse(body);
+
+    if (!username || !email || !password) {
+      res.status(400).json({ error: 'All fields are required.' });
+      return;
     }
-
-    const { username, email, password } = req.body;
 
     try {
-        const hashedPassword = await bcrypt.hash(password, 10);
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const collection = client.db('roomify_db').collection('users');
 
-        const collection = client.db('roomify_db').collection('users');
-        const result = await collection.insertOne({ username, email, password: hashedPassword });
+      // Ensure unique indexes on username and email
+      await collection.createIndex({ username: 1 }, { unique: true });
+      await collection.createIndex({ email: 1 }, { unique: true });
 
-        res.status(200).json({ message: 'User created', data: result });
+      const result = await collection.insertOne({ username, email, password: hashedPassword });
+
+      res.status(200).json({ message: 'User created', data: { id: result.insertedId } });
     } catch (error) {
-        console.error('Database Error:', error);
-        res.status(500).send('A database error occurred. Please try again later.');
+      console.error('Database Error:', error);
+
+      if (error.code === 11000) {
+        res.status(409).json({ error: 'Username or email already exists.' });
+      } else {
+        res.status(500).json({ error: 'A database error occurred. Please try again later.' });
+      }
     }
+  });
 };
