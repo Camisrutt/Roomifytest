@@ -15,10 +15,10 @@ module.exports = async (req, res) => {
         const collection = client.db('roomify_db').collection('users');
         const result = await collection.insertOne({ username, email, password: hashedPassword });
 
-        res.redirect('/signup_success.html');
+        res.redirect('/Root/html-pages/signup_success.html');
     } catch (error) {
         if (error.code === 11000) { // Duplicate key error
-            res.redirect('/account_exists.html');
+            res.redirect('/Root/html-pages/account_exists.html');
         } else {
             console.error('Database Error:', error);
             res.status(500).send('A database error occurred. Please try again later.');

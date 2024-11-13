@@ -15,9 +15,9 @@ module.exports = async (req, res) => {
 
         if (user && await bcrypt.compare(password, user.password)) {
             req.session.username = user.username;
-            res.redirect('/login_success.html');
+            res.redirect('/Root/html-pages/login_success.html');
         } else {
-            res.redirect('/login-page.html?error=1');
+            res.redirect('/Root/html-pages/login-page.html?error=1');
         }
     } catch (error) {
         console.error('Database Error:', error);
