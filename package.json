@@ -2,30 +2,21 @@
   "name": "roomify",
   "version": "1.0.0",
   "description": "A project designed to match roommates based on preferences such as cleanliness, lifestyle, and more.",
-  "main": "index.html",
   "scripts": {
-    "dev": "vercel dev",
-    "build": "vercel build"
+    "dev": "vercel dev"
   },
   "dependencies": {
-    "@vercel/node": "^2.10.3",
     "autoprefixer": "^10.4.20",
     "bcrypt": "^5.1.1",
-    "composer": "^4.1.0",
     "dotenv": "^16.4.5",
     "mongodb": "^6.10.0",
     "node-fetch": "^3.3.2",
-    "php": "^1.1.0",
     "postcss": "^8.4.49",
     "postcss-cli": "^11.0.0",
-    "sphp": "^0.6.3",
     "stylelint": "^16.10.0",
     "uuid": "^11.0.2"
   },
   "engines": {
-    "node": "18.x"
-  },
-  "devDependencies": {
-     "vercel": "^28.0.0"
+    "node": "16.x"
   }
 }
