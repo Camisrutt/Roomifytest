@@ -6,8 +6,8 @@
     <title>Roomify - Login</title>
     <!-- Google Font and CSS from homepage -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/Root/assets/css/style-login.css">
-    <link rel="stylesheet" href="/Root/assets/css/background.css">
+    <link rel="stylesheet" href="../assets/css/style-login.css">
+    <link rel="stylesheet" href="../assets/css/background.css">
 </head>
 
 <body>
@@ -19,7 +19,7 @@
         </div>
         
         <!-- 表单提交到 check_password.php -->
-        <form action="/Root/api/login_process.js" method="post">
+        <form action="/api/login_process" method="post">
             <label for="username">Username</label>
             <input type="text" name="username" placeholder="Username" required>
             <label for="password">Password</label>
@@ -31,7 +31,7 @@
             <a href="signup-page.html">Create an account</a>
         </div>
         <div class="back-to-homepage">
-            <a href="../index.html">Back to Home</a>
+            <a href="../../index.html">Back to Home</a>
         </div>
     </div>
 
