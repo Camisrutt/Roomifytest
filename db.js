@@ -5,6 +5,7 @@
 // Root/db.js
 // db.js
 import { MongoClient } from 'mongodb';
+import dotenv from 'dotenv';
 
 let cachedClient = null;
 let cachedDb = null;
@@ -32,4 +33,8 @@ export async function connectToMongoDB() {
   console.log('Connected to MongoDB');
 
   return { client: cachedClient, db: cachedDb };
+}
+
+if (process.env.NODE_ENV !== 'production') {
+  dotenv.config();
 }
