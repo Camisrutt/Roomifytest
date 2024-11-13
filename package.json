@@ -2,6 +2,7 @@
   "name": "roomify",
   "version": "1.0.0",
   "description": "A project designed to match roommates based on preferences such as cleanliness, lifestyle, and more.",
+  "type": "module", 
   "scripts": {
     "dev": "vercel dev"
   },
