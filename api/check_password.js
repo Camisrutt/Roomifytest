@@ -1,5 +1,5 @@
-// login_process.js
-const { client } = require('../../db');
+// check_password.js
+const { client } = require('../db');
 const bcrypt = require('bcrypt');
 
 module.exports = async (req, res) => {
@@ -15,7 +15,7 @@ module.exports = async (req, res) => {
 
         if (user && await bcrypt.compare(password, user.password)) {
             req.session.username = user.username;
-            res.redirect('/Root/html-pages/login_success.html');
+            res.redirect('/Root/html-pages/login_success.html?username=' + encodeURIComponent(username));
         } else {
             res.redirect('/Root/html-pages/login-page.html?error=1');
         }
