@@ -266,3 +266,7 @@ body {
 .save-button:hover {
     background-color: #8bc6a9;
 }
+.edit-modal {
+    display: none;
+    /* other styling properties */
+}
