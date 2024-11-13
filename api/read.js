@@ -1,5 +1,5 @@
 // api/read.js
-import { connectToMongoDB } from '../../db';
+import { connectToMongoDB } from '../db';
 
 export default async (req, res) => {
   if (req.method !== 'GET') {

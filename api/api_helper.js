@@ -1,6 +1,6 @@
 // api/api_helper.js
 export async function callNodeAPI(endpoint, method = 'GET', data = null) {
-    const url = `https://your-deployment-url.vercel.app/api/${endpoint}`; // Replace with your actual deployment URL
+    const url = `https://roomifytest.vercel.app/api/${endpoint}`; // Replace with your actual deployment URL
     const options = {
       method: method,
       headers: {

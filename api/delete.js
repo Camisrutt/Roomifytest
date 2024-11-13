@@ -1,5 +1,5 @@
 // api/delete.js
-import { connectToMongoDB } from '../../db';
+import { connectToMongoDB } from '../db';
 import { ObjectId } from 'mongodb';
 
 export default async (req, res) => {
